@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -9,22 +10,24 @@ export default function Header() {
       </div>
 
       <div className="d-flex gap-3 py-2">
-        <div
+        <Link
+          to="/signup"
           className="btn btn-primary fw-900 mx-2"
           style={{
             fontSize: "14px",
           }}
         >
           Register
-        </div>
-        <div
+        </Link>
+        <Link
+          to="/login"
           className="btn btn-primary fw-900"
           style={{
             fontSize: "14px",
           }}
         >
           Login
-        </div>
+        </Link>
       </div>
     </nav>
   );
