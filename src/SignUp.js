@@ -128,7 +128,7 @@ export default function SignUp() {
             <small className="text-danger">passwords do not match</small>
           )}
         </div>
-        <button type="submit" className="btn btn-primary w-25 m-auto fw-900">
+        <button type="submit" className="btn btn-primary m-auto fw-900">
           Register
         </button>
       </form>
