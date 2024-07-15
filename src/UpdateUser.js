@@ -9,6 +9,18 @@ export default function UpdateUser() {
   const [accept, setAccept] = useState(false);
   const [emailError, setEmailError] = useState("");
 
+  const id = window.location.pathname.split("/").slice(-1)[0];
+  console.log(typeof id);
+
+  useEffect(() => {
+    fetch(`http://127.0.0.1:8000/api/user/showbyid/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setName(data[0].name);
+        setEmail(data[0].email);
+      });
+  }, []);
+
   useEffect(() => {
     if (emailError) {
       console.log("Email Error:", emailError);
@@ -134,7 +146,7 @@ export default function UpdateUser() {
             )}
           </div>
           <button type="submit" className="btn btn-primary m-auto fw-900">
-            Register
+            Update
           </button>
         </form>
       </div>
