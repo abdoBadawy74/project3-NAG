@@ -9,22 +9,26 @@ export default function Header() {
   return (
     <nav className="navbar d-flex align-items-center justify-content-between">
       <div className="d-flex justify-content-between align-items-center">
-        <h6
+        <Link
+          to="/"
           style={{
             cursor: "pointer",
             marginRight: "20px",
+            textDecoration: "none",
           }}
         >
           Home
-        </h6>
-        <h6
+        </Link>
+        <Link
+          to="/about"
           style={{
             cursor: "pointer",
             marginRight: "20px",
+            textDecoration: "none",
           }}
         >
           About
-        </h6>
+        </Link>
       </div>
 
       <div className="d-flex gap-3 py-2">
