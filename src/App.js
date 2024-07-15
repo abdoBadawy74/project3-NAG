@@ -8,7 +8,7 @@ import Dashboard from "./Dashboard";
 
 function App() {
   return (
-    <div className="App contianer">
+    <div className="App">
       <Routes>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login/>} />

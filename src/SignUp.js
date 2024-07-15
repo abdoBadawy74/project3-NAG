@@ -57,7 +57,7 @@ export default function SignUp() {
     <>
       <Header />
       <div
-        className="d-flex justify-content-center align-items-center"
+        className="contianer d-flex justify-content-center align-items-center"
         style={{ minHeight: "100vh" }}
       >
         <form

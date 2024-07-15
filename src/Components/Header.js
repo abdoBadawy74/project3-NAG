@@ -7,7 +7,7 @@ export default function Header() {
     window.location.pathname = "/";
   }
   return (
-    <nav className="navbar d-flex align-items-center justify-content-between">
+    <nav className="contianer d-flex align-items-center justify-content-between">
       <div className="d-flex justify-content-between align-items-center">
         <Link
           to="/"
