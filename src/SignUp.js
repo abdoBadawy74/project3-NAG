@@ -40,6 +40,11 @@ export default function SignUp() {
           password: password,
           password_confirmation: repeat,
         });
+        if (res.status === 200) {
+          window.localStorage.setItem("email", email);
+          // window.location.href = "/";
+          window.location.pathname = "/"; // what is the difference between this and the above line?
+        }
       }
     } catch (err) {
       setEmailError(err.response.status);

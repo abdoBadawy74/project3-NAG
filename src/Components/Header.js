@@ -3,10 +3,24 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <nav className="d-flex align-items-center justify-content-between">
+    <nav className="navbar d-flex align-items-center justify-content-between">
       <div className="d-flex justify-content-between align-items-center">
-        <h6>Home</h6>
-        <h6>About</h6>
+        <h6
+          style={{
+            cursor: "pointer",
+            marginRight: "20px",
+          }}
+        >
+          Home
+        </h6>
+        <h6
+          style={{
+            cursor: "pointer",
+            marginRight: "20px",
+          }}
+        >
+          About
+        </h6>
       </div>
 
       <div className="d-flex gap-3 py-2">

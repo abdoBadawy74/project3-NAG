@@ -1,9 +1,9 @@
-import logo from "./logo.svg";
 import "./App.css";
 import SignUp from "./SignUp";
 import Header from "./Components/Header";
 import { Route, Routes } from "react-router-dom";
 import Login from "./Login";
+import Home from "./Home";
 
 function App() {
   return (
@@ -12,6 +12,8 @@ function App() {
       <Routes>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </div>
   );
