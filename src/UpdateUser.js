@@ -46,7 +46,7 @@ export default function UpdateUser() {
 
     try {
       if (flag) {
-        let res = await axios.post("http://127.0.0.1:8000/api/register", {
+        let res = await axios.post(`http://127.0.0.1:8000/api/user/update/${id}`, {
           name: name,
           email: email,
           password: password,
@@ -55,7 +55,7 @@ export default function UpdateUser() {
         if (res.status === 200) {
           window.localStorage.setItem("email", email);
           // window.location.href = "/";
-          window.location.pathname = "/"; // what is the difference between this and the above line?
+          window.location.pathname = "/dashboard/users"; 
         }
       }
     } catch (err) {
