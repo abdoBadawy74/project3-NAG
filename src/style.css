@@ -1,19 +1,44 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
-body{
+body {
   font-family: "Cairo", sans-serif;
 }
-.contianer{
+.contianer {
   margin: 0 auto !important;
   padding: 0 20px !important;
 }
 
 /* side bar */
-.item-link:hover{
+.item-link:hover {
   transition: 0.3s;
   background-color: #f1f1f1;
+}
+
+/* Table */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+th,
+td {
+  border: 1px solid #a0c8cf;
+  padding: 8px;
+  text-align: center;
+}
+th {
+  background-color: #74afb9;
+  color: white;
+}
+td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
