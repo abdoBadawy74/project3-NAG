@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
@@ -38,14 +39,16 @@ export default function Users() {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>
-                <i
-                  className="fa-solid fa-pen-to-square px-2"
-                  style={{
-                    color: "#74afb9",
-                    fontSize: "20px",
-                    cursor: "pointer",
-                  }}
-                ></i>
+                <Link to={`${user.id}`}>
+                  <i
+                    className="fa-solid fa-pen-to-square px-2"
+                    style={{
+                      color: "#74afb9",
+                      fontSize: "20px",
+                      cursor: "pointer",
+                    }}
+                  ></i>
+                </Link>
                 <i
                   className="fa-solid fa-trash"
                   style={{
