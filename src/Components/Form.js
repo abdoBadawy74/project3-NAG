@@ -1,25 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-export default function UpdateUser() {
+export default function Forms() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeat, setRepeat] = useState("");
   const [accept, setAccept] = useState(false);
   const [emailError, setEmailError] = useState("");
-
-  const id = window.location.pathname.split("/").slice(-1)[0];
-  console.log(typeof id);
-
-  useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/user/showbyid/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setName(data[0].name);
-        setEmail(data[0].email);
-      });
-  }, []);
 
   useEffect(() => {
     if (emailError) {
@@ -46,19 +34,16 @@ export default function UpdateUser() {
 
     try {
       if (flag) {
-        let res = await axios.post(
-          `http://127.0.0.1:8000/api/user/update/${id}`,
-          {
-            name: name,
-            email: email,
-            password: password,
-            password_confirmation: repeat,
-          }
-        );
+        let res = await axios.post("http://127.0.0.1:8000/api/register", {
+          name: name,
+          email: email,
+          password: password,
+          password_confirmation: repeat,
+        });
         if (res.status === 200) {
           window.localStorage.setItem("email", email);
           // window.location.href = "/";
-          window.location.pathname = "/dashboard/users";
+          window.location.pathname = "/"; // what is the difference between this and the above line?
         }
       }
     } catch (err) {
@@ -66,6 +51,7 @@ export default function UpdateUser() {
       console.log(emailError);
     }
   }
+
   return (
     <>
       <div
@@ -149,7 +135,7 @@ export default function UpdateUser() {
             )}
           </div>
           <button type="submit" className="btn btn-primary m-auto fw-900">
-            Update
+            Register
           </button>
         </form>
       </div>
