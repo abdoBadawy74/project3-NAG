@@ -1,13 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-export default function Forms() {
+export default function Forms(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeat, setRepeat] = useState("");
   const [accept, setAccept] = useState(false);
   const [emailError, setEmailError] = useState("");
+
+  useEffect(() => {
+    setName(props.name);
+    setEmail(props.email);
+  }, [props.name, props.email]);
 
   useEffect(() => {
     if (emailError) {
@@ -34,16 +39,19 @@ export default function Forms() {
 
     try {
       if (flag) {
-        let res = await axios.post("http://127.0.0.1:8000/api/register", {
-          name: name,
-          email: email,
-          password: password,
-          password_confirmation: repeat,
-        });
+        let res = await axios.post(
+          `http://127.0.0.1:8000/api/${props.endPoint}`,
+          {
+            name: name,
+            email: email,
+            password: password,
+            password_confirmation: repeat,
+          }
+        );
         if (res.status === 200) {
-          window.localStorage.setItem("email", email);
+          props.IsLocalStorage && window.localStorage.setItem("email", email);
           // window.location.href = "/";
-          window.location.pathname = "/"; // what is the difference between this and the above line?
+          window.location.pathname = `/${props.navigate}`; // what is the difference between this and the above line?
         }
       }
     } catch (err) {
@@ -74,7 +82,7 @@ export default function Forms() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            {name.length < 3 && accept && (
+            {name?.length < 3 && accept && (
               <small className="text-danger">
                 name must be more than 3 characters
               </small>
@@ -135,7 +143,7 @@ export default function Forms() {
             )}
           </div>
           <button type="submit" className="btn btn-primary m-auto fw-900">
-            Register
+            {props.button}
           </button>
         </form>
       </div>

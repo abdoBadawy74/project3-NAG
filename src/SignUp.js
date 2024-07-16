@@ -5,7 +5,12 @@ export default function SignUp() {
   return (
     <>
       <Header />
-      <Forms />
+      <Forms
+        button="Register"
+        endPoint="register"
+        navigate=""
+        IsLocalStorage={true}
+      />
     </>
   );
 }
