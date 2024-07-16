@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Forms from "./Components/Form";
 
+
 export default function UpdateUser() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -19,6 +20,7 @@ export default function UpdateUser() {
 
   return (
     <>
+    <h1 className="mt-4 mx-4">Update User</h1>
       <Forms
         button="Update"
         name={name}
@@ -26,6 +28,7 @@ export default function UpdateUser() {
         endPoint={`user/update/${id}`}
         navigate="dashboard/users"
         IsLocalStorage={false}
+        isUpdate={true}
       />
     </>
   );

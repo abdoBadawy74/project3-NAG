@@ -63,12 +63,20 @@ export default function Forms(props) {
   return (
     <>
       <div
-        className="contianer d-flex justify-content-center align-items-center"
+        className={`${
+          props.isUpdate
+            ? "container "
+            : "container d-flex justify-content-center align-items-center"
+        }`}
         style={{ minHeight: "100vh" }}
       >
         <form
           onSubmit={submit}
-          className="d-flex flex-column w-50 shadow p-4 mb-5 bg-white rounded"
+          className={`${
+            props.isUpdate
+              ? " p-4"
+              : "d-flex flex-column w-50 shadow p-4 mb-5 bg-white rounded"
+          }`}
         >
           <div className="mb-2">
             <label htmlFor="name" className="form-label">
@@ -142,7 +150,14 @@ export default function Forms(props) {
               <small className="text-danger">passwords do not match</small>
             )}
           </div>
-          <button type="submit" className="btn btn-primary m-auto fw-900">
+          <button
+            type="submit"
+            className={`${
+              props.isUpdate
+                ? "my-2 w-100 btn btn-primary m-auto fw-900"
+                : "btn btn-primary m-auto fw-900"
+            }`}
+          >
             {props.button}
           </button>
         </form>
