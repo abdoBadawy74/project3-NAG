@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Forms from "./Components/Form";
 
-
 export default function UpdateUser() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -13,14 +12,14 @@ export default function UpdateUser() {
     fetch(`http://127.0.0.1:8000/api/user/showbyid/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        setName(data[0].name);
-        setEmail(data[0].email);
+        setName(data[0]?.name);
+        setEmail(data[0]?.email);
       });
   }, []);
 
   return (
     <>
-    <h1 className="mt-4 mx-4">Update User</h1>
+      <h1 className="mt-4 mx-4">Update User</h1>
       <Forms
         button="Update"
         name={name}
@@ -28,7 +27,7 @@ export default function UpdateUser() {
         endPoint={`user/update/${id}`}
         navigate="dashboard/users"
         IsLocalStorage={false}
-        isUpdate={true}
+        BtnStyle={true}
       />
     </>
   );

@@ -64,7 +64,7 @@ export default function Forms(props) {
     <>
       <div
         className={`${
-          props.isUpdate
+          props.BtnStyle
             ? "container "
             : "container d-flex justify-content-center align-items-center"
         }`}
@@ -73,7 +73,7 @@ export default function Forms(props) {
         <form
           onSubmit={submit}
           className={`${
-            props.isUpdate
+            props.BtnStyle
               ? " p-4"
               : "d-flex flex-column w-50 shadow p-4 mb-5 bg-white rounded"
           }`}
@@ -153,7 +153,7 @@ export default function Forms(props) {
           <button
             type="submit"
             className={`${
-              props.isUpdate
+              props.BtnStyle
                 ? "my-2 w-100 btn btn-primary m-auto fw-900"
                 : "btn btn-primary m-auto fw-900"
             }`}

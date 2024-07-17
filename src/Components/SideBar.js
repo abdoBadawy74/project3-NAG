@@ -16,6 +16,13 @@ export default function SideBar() {
       >
         Users
       </Link>
+
+      <Link
+        to="/dashboard/users/create"
+        className="item-link link-dark text-decoration-none d-block fs-3 px-3 border-bottom"
+      >
+        New User
+      </Link>
     </div>
   );
 }
