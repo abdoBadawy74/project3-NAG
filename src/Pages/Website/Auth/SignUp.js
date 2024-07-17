@@ -1,5 +1,6 @@
-import Header from "./Components/Header";
-import Forms from "./Components/Form";
+import Forms from "../../../Components/Form";
+import Header from "../../../Components/Header";
+
 
 export default function SignUp() {
   return (

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Forms from "./Components/Form";
+import Forms from "../../../Components/Form";
 
 export default function UpdateUser() {
   const [name, setName] = useState("");

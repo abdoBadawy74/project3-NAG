@@ -1,5 +1,5 @@
 import React from 'react'
-import Forms from './Components/Form'
+import Forms from '../../../Components/Form'
 
 export default function CreateUser() {
   return (

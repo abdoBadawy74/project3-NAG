@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import "./SideBar.css";
 
 export default function SideBar() {
   return (
@@ -13,7 +14,7 @@ export default function SideBar() {
       <NavLink
         to="/dashboard/users"
         activeClassName="active"
-        className="item-link link-dark text-decoration-none d-block fs-3 px-3 border-bottom py-2 mt-4"
+        className="item-link link-dark text-decoration-none d-block fs-4 px-3 border-bottom py-2 mt-4"
       >
         <i className="fa-solid fa-users fs-5 mx-1 text-muted"></i>
         Users

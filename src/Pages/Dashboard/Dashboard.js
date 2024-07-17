@@ -1,7 +1,7 @@
 import React from "react";
-import TopBar from "./Components/TopBar";
-import SideBar from "./Components/SideBar";
-import Users from "./Users";
+import TopBar from "../../Components/TopBar";
+import SideBar from "../../Components/SideBar/SideBar";
+import Users from "./Users/ShowUsers/Users";
 import { Outlet } from "react-router-dom";
 
 export default function Dashboard() {
