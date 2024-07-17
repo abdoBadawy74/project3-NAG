@@ -14,7 +14,11 @@ body {
 /* side bar */
 .item-link:hover {
   transition: 0.3s;
-  background-color: #f1f1f1;
+  background-color: #b3b2b2;
+}
+.active{
+  background-color: #b3b2b2;
+
 }
 
 /* Table */

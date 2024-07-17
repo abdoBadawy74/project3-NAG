@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function SideBar() {
   return (
@@ -10,19 +10,23 @@ export default function SideBar() {
         height: "100vh",
       }}
     >
-      <Link
+      <NavLink
         to="/dashboard/users"
-        className="item-link link-dark text-decoration-none d-block fs-3 px-3 border-bottom"
+        activeClassName="active"
+        className="item-link link-dark text-decoration-none d-block fs-3 px-3 border-bottom py-2 mt-4"
       >
+        <i className="fa-solid fa-users fs-5 mx-1 text-muted"></i>
         Users
-      </Link>
+      </NavLink>
 
-      <Link
-        to="/dashboard/users/create"
-        className="item-link link-dark text-decoration-none d-block fs-3 px-3 border-bottom"
+      <NavLink
+        to="/dashboard/user/create"
+        activeClassName="active"
+        className="item-link link-dark text-decoration-none d-block fs-4 px-3 border-bottom py-2"
       >
+        <i class="fa-solid fa-user-plus mx-1 fs-5 text-muted"></i>
         New User
-      </Link>
+      </NavLink>
     </div>
   );
 }

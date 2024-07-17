@@ -20,7 +20,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard/>} >
           <Route path="users" element={<Users/>} />
           <Route path="users/:id" element={<UpdateUser/>} />
-          <Route path="users/create" element={<CreateUser/>} />
+          <Route path="user/create" element={<CreateUser/>} />
           
         </Route>
       </Routes>
