@@ -1,13 +1,20 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
 import Header from "../../../Components/Header";
-
+import axios from "axios";
+import React, { useEffect, useState, useContext } from "react";
+import { user } from "../../../Context/userContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [accept, setAccept] = useState(false);
   const [emailError, setEmailError] = useState("");
+
+  const nav = useNavigate();
+
+  const User = useContext(user);
+  console.log(User);
 
   useEffect(() => {
     if (emailError) {
@@ -16,41 +23,34 @@ export default function Login() {
   }, [emailError]);
 
   async function submit(e) {
-    let flag = true;
-
     e.preventDefault();
-    setAccept(true);
-
-    if (email === "" || password.length < 8) {
-      flag = false;
-    } else {
-      flag = true;
-    }
 
     try {
-      if (flag) {
-        let res = await axios.post("http://127.0.0.1:8000/api/login", {
-          email: email,
-          password: password,
-        });
-      
-      }
+      let res = await axios.post(`http://127.0.0.1:8000/api/login`, {
+        email: email,
+        password: password,
+      });
+      const token = res.data.data.token;
+      const userData = res.data.data.user;
+      User.setAuth({ token, userData });
+      nav("/dashboard");
     } catch (err) {
-      setEmailError(err.response.status);
-      console.log(emailError);
+      if (err.response.status === 422) {
+        setEmailError(true);
+      }
+      setAccept(true);
     }
   }
-
   return (
     <>
       <Header />
       <div
-        className="contianer d-flex justify-content-center align-items-center"
+        className={`${"container d-flex justify-content-center align-items-center"}`}
         style={{ minHeight: "100vh" }}
       >
         <form
           onSubmit={submit}
-          className="d-flex flex-column w-50 shadow p-4 mb-5 bg-white rounded"
+          className={`${"d-flex flex-column w-50 shadow p-4 mb-5 bg-white rounded"}`}
         >
           <div className="mb-2">
             <label htmlFor="email" className="form-label">
@@ -91,8 +91,11 @@ export default function Login() {
             )}
           </div>
 
-          <button type="submit" className="btn btn-primary m-auto fw-900">
-            Log In
+          <button
+            type="submit"
+            className={`${"btn btn-primary m-auto fw-900"}`}
+          >
+            Login
           </button>
         </form>
       </div>

@@ -2,6 +2,7 @@ import Header from "../../../Components/Header";
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import { user } from "../../../Context/userContext";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -10,6 +11,8 @@ export default function SignUp() {
   const [repeat, setRepeat] = useState("");
   const [accept, setAccept] = useState(false);
   const [emailError, setEmailError] = useState("");
+
+  const nav = useNavigate();
 
   const User = useContext(user);
   console.log(User);
@@ -33,6 +36,7 @@ export default function SignUp() {
       const token = res.data.data.token;
       const userData = res.data.data.user;
       User.setAuth({ token, userData });
+      nav("/dashboard");
     } catch (err) {
       if (err.response.status === 422) {
         setEmailError(true);

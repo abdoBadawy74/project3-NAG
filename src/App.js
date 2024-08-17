@@ -19,13 +19,13 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/" element={<Home />} />
 
-        {/* <Route element={<RequireAuth/>}> */}
+        <Route element={<RequireAuth/>}>
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="users" element={<Users />} />
             <Route path="users/:id" element={<UpdateUser />} />
             <Route path="user/create" element={<CreateUser />} />
           </Route>
-        {/* </Route> */}
+        </Route>
       </Routes>
     </div>
   );
