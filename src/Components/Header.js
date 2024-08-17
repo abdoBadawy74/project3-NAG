@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Dashboard from './../Pages/Dashboard/Dashboard';
 
 export default function Header() {
   function handleLogout() {
@@ -32,7 +33,7 @@ export default function Header() {
       </div>
 
       <div className="d-flex gap-3 py-2">
-        {!window.localStorage.getItem("email") ? (
+
           <>
             <Link
               to="/signup"
@@ -52,12 +53,21 @@ export default function Header() {
             >
               Login
             </Link>
+            <Link
+              to="/dashboard"
+              className="btn btn-primary fw-900"
+              style={{
+                fontSize: "14px",
+              }}
+            >
+              Dashboard
+            </Link>
           </>
-        ) : (
-          <div className="btn btn-danger" onClick={handleLogout}>
+    
+          {/* <div className="btn btn-danger" onClick={handleLogout}>
             Log out
           </div>
-        )}
+         */}
       </div>
     </nav>
   );

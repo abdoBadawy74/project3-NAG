@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
-import { user } from "../Context/Context";
+import { user } from "../Context/userContext";
 
 export default function Forms(props) {
   const [name, setName] = useState("");
