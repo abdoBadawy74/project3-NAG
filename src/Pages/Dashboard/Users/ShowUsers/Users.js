@@ -27,9 +27,16 @@ export default function Users() {
 
   //   delete user
   function deleteUser(id) {
-    axios.delete(`http://127.0.0.1:8000/api/user/delete/${id}`).then((res) => {
-      setLoading(!loading);
-    });
+    axios
+      .delete(`http://127.0.0.1:8000/api/user/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+      })
+      .then((res) => {
+        setLoading(!loading);
+      });
   }
 
   return (
