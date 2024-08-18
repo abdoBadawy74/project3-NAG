@@ -35,7 +35,7 @@ export default function Login() {
       User.setAuth({ token, userData });
       nav("/dashboard");
     } catch (err) {
-      if (err.response.status === 422) {
+      if (err.response.status === 401) {
         setEmailError(true);
       }
       setAccept(true);
@@ -67,10 +67,6 @@ export default function Login() {
             {email === "" && accept && (
               <small className="text-danger">email is required</small>
             )}
-
-            {emailError === 422 && accept && (
-              <small className="text-danger">email is already taken</small>
-            )}
           </div>
           <div className="mb-2">
             <label htmlFor="password" className="form-label">
@@ -90,7 +86,9 @@ export default function Login() {
               </small>
             )}
           </div>
-
+          {emailError && accept && (
+            <small className="text-danger"> Password or Email not right </small>
+          )}
           <button
             type="submit"
             className={`${"btn btn-primary m-auto fw-900"}`}
