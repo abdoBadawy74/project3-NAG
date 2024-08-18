@@ -38,6 +38,29 @@ export default function Users() {
         setLoading(!loading);
       });
   }
+  async function refresh() {
+    try {
+      await axios
+        .post("http://127.0.0.1:8000/api/refresh", null, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          context.setAuth((prev) => {
+            return {
+              ...prev,
+              token: res.data.token,
+            };
+          });
+          console.log(res.date.token);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log(context);
 
   return (
     <div className="p-4">
@@ -81,6 +104,9 @@ export default function Users() {
           ))}
         </tbody>
       </table>
+      <button className="btn btn-primary mt-4" onClick={refresh}>
+        Refresh token{" "}
+      </button>
     </div>
   );
 }
