@@ -9,6 +9,7 @@ import Users from "./Pages/Dashboard/Users/ShowUsers/Users";
 import UpdateUser from "./Pages/Dashboard/Users/UpdateUser";
 import CreateUser from "./Pages/Dashboard/Users/CreateUser";
 import RequireAuth from "./Pages/Website/Auth/RequireAuth";
+import PersistLogin from "./Pages/Website/Auth/PersistLogin";
 
 function App() {
   return (
@@ -19,11 +20,13 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/" element={<Home />} />
 
-        <Route element={<RequireAuth/>}>
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="users" element={<Users />} />
-            <Route path="users/:id" element={<UpdateUser />} />
-            <Route path="user/create" element={<CreateUser />} />
+        <Route element={<PersistLogin />}>
+          <Route element={<RequireAuth />}>
+            <Route path="/dashboard" element={<Dashboard />}>
+              <Route path="users" element={<Users />} />
+              <Route path="users/:id" element={<UpdateUser />} />
+              <Route path="user/create" element={<CreateUser />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

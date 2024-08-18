@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import { user } from "../../../Context/userContext";
 import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -13,6 +14,9 @@ export default function SignUp() {
   const [emailError, setEmailError] = useState("");
 
   const nav = useNavigate();
+
+  // Cookie
+  const cookie = new Cookies();
 
   const User = useContext(user);
   console.log(User);
@@ -34,6 +38,7 @@ export default function SignUp() {
         password_confirmation: repeat,
       });
       const token = res.data.data.token;
+      cookie.set("Bearer", token);
       const userData = res.data.data.user;
       User.setAuth({ token, userData });
       nav("/dashboard");
