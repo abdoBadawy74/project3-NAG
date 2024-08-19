@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-
 export default function UpdateUser() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
