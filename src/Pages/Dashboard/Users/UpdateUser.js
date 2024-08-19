@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 export default function UpdateUser() {
   const [name, setName] = useState("");
@@ -8,15 +10,23 @@ export default function UpdateUser() {
   const [repeat, setRepeat] = useState("");
   const [emailError, setEmailError] = useState("");
   const [accept, setAccept] = useState(false);
+  const cookie = new Cookies();
+  const token = cookie.get("Bearer");
+  const nav = useNavigate();
 
   const id = window.location.pathname.split("/").slice(-1)[0];
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/user/showbyid/${id}`)
-      .then((response) => response.json())
+    axios
+      .get(`http://127.0.0.1:8000/api/user/showbyid/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          
+        },
+      })
       .then((data) => {
-        setName(data[0]?.name);
-        setEmail(data[0]?.email);
+        setName(data.data[0]?.name);
+        setEmail(data.data[0]?.email);
       });
   }, []);
   async function submit(e) {
@@ -30,10 +40,20 @@ export default function UpdateUser() {
           email: email,
           password: password,
           password_confirmation: repeat,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            
+          },
         }
-      );
+      ).then((data) => {
+        console.log(data);
+        nav(-1)
+      });
     } catch (err) {
       setEmailError(err.response.status);
+      console.log(err);
     }
   }
 

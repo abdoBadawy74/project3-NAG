@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 export default function CreateUser() {
   const [name, setName] = useState("");
@@ -8,18 +10,34 @@ export default function CreateUser() {
   const [repeat, setRepeat] = useState("");
   const [emailError, setEmailError] = useState("");
   const [accept, setAccept] = useState(false);
+  const cookie = new Cookies();
+  const token = cookie.get("Bearer");
+  const nav = useNavigate();
 
   async function submit(e) {
     e.preventDefault();
 
     try {
-      let res = await axios.post(`http://127.0.0.1:8000/api/user/create`, {
-        name: name,
-        email: email,
-        password: password,
-        password_confirmation: repeat,
-      });
-      console.log(res);
+      let res = await axios
+        .post(
+          `http://127.0.0.1:8000/api/user/create`,
+          {
+            name: name,
+            email: email,
+            password: password,
+            password_confirmation: repeat,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              Accept: "application/json",
+            },
+          }
+        )
+        .then((data) => {
+          console.log(data);
+          nav("/dashboard/users");
+        });
     } catch (err) {
       setEmailError(err.response.status);
     }
