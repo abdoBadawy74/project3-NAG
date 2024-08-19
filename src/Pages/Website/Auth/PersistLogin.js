@@ -12,7 +12,6 @@ export default function PersistLogin() {
 
   //   cookie
   const cookie = new Cookies();
-  const tokenCookie = cookie.set("Bearer", token);
   const getToken = cookie.get("Bearer");
 
   useEffect(() => {
@@ -25,13 +24,12 @@ export default function PersistLogin() {
             },
           })
           .then((res) => {
-            context.setAuth((prev) => {
-              return {
-                ...prev,
-                token: res.data.token,
-              };
+            context.setAuth({
+              userData: res.data.user,
+              token: res.data.token,
             });
-            console.log(res.date.token);
+            cookie.set("Bearer", res.data.token);
+            console.log(res);
           });
       } catch (error) {
         console.log(error);
@@ -40,7 +38,6 @@ export default function PersistLogin() {
       }
     }
     !token ? refresh() : setLoading(false);
-
   }, []);
   return loading ? <Loading /> : <Outlet />;
 }

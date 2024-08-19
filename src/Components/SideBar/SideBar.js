@@ -23,7 +23,7 @@ export default function SideBar() {
         to="/dashboard/user/create"
         className="item-link link-dark text-decoration-none d-block fs-4 px-3 border-bottom py-2"
       >
-        <i class="fa-solid fa-user-plus mx-1 fs-5 text-muted"></i>
+        <i className="fa-solid fa-user-plus mx-1 fs-5 text-muted"></i>
         New User
       </NavLink>
     </div>

@@ -38,7 +38,6 @@ export default function Users() {
         setLoading(!loading);
       });
   }
-  
 
   return (
     <div className="p-4">
