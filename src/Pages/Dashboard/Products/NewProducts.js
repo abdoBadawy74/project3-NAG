@@ -46,7 +46,7 @@ export default function NewProduct() {
   }
   return (
     <>
-      <h1 className="mt-4 mx-4">New User</h1>
+      <h1 className="mt-4 mx-4">New Product</h1>
       <div className={`${"container "}`} style={{ minHeight: "100vh" }}>
         <form onSubmit={submit} className={`${" p-4"}`}>
           <div className="mb-2">
