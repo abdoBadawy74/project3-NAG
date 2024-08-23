@@ -13,6 +13,7 @@ import PersistLogin from "./Pages/Website/Auth/PersistLogin";
 import Products from "./Pages/Dashboard/Products/Products";
 import NewProducts from "./Pages/Dashboard/Products/NewProducts";
 import UpdateProduct from "./Pages/Dashboard/Products/UpdateProduct";
+import About from "./Pages/Website/About";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
 
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth />}>
